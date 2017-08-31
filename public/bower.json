@@ -1,0 +1,20 @@
+{
+  "name": "public",
+  "authors": [
+    "i_am_invisible <samuel.james@venturegardengroup.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gentelella": "^1.4.0"
+  }
+}
