@@ -11,9 +11,18 @@
 |
 */
 
-$app->get('/', function ()  {
-    return view('pages.home');
-});
-$app->get('/events', 'EventController@all'); //Get all events
+$app->get('/dashboard', 'DashboardController@index');
+$app->get('/', 'DashboardController@index');
+$app->get('/events', 'EventController@get'); //Get all events
 $app->get('/event/stat','EventController@stats');
-$app->get('distinct/event','DistinctEventController@all');
+$app->get('/event/severity/distribution','EventController@event_severity_percentage');
+
+
+/*
+|--------------------------------------------------------------------------
+| Graph Routes
+|--------------------------------------------------------------------------
+*/
+$app->get('graph/barchart', 'DashboardController@barchart');
+$app->get('graph/piechart', 'DashboardController@piechart');
+

@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace App\Traits;
 
+use App\Event;
+
 trait  EventTrait
 {
     public function all()
@@ -27,28 +29,39 @@ trait  EventTrait
         return Event::where('priority', config('event.priority.low'))->get();
     }
 
-    public function group_all()
+    public function group_all($paginate=false)
+
     {
+        if ($paginate) {
+            return Event::orderBy('timestamp', 'desc')->groupBy('signature')->paginate(100);
+        }
         return Event::orderBy('timestamp', 'desc')->groupBy('signature')->get();
 
     }
 
-
-    public function group_high()
+    public function group_high($paginate=false)
     {
+        if ($paginate) {
+            return Event::where('priority', config('event.priority.high'))->orderBy('timestamp', 'desc')->groupBy('signature')->paginate(100);
+        }
         return Event::where('priority', config('event.priority.high'))->orderBy('timestamp', 'desc')->groupBy('signature')->get();
 
     }
 
-    public function group_medium()
+    public function group_medium($paginate=false)
     {
+        if ($paginate) {
+            return Event::where('priority', config('event.priority.medium'))->orderBy('timestamp', 'desc')->groupBy('signature')->paginate(100);
+        }
         return Event::where('priority', config('event.priority.medium'))->orderBy('timestamp', 'desc')->groupBy('signature')->get();
 
     }
 
-    public function group_low()
+    public function group_low($paginate=false)
     {
-
+        if ($paginate) {
+            return Event::where('priority', config('event.priority.low'))->orderBy('timestamp', 'desc')->groupBy('signature')->paginate(100);
+        }
         return Event::where('priority', config('event.priority.low'))->orderBy('timestamp', 'desc')->groupBy('signature')->get();
 
     }

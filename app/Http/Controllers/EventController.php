@@ -3,32 +3,40 @@
 namespace App\Http\Controllers;
 
  use App\Traits\EventTrait;
+ use Illuminate\Http\Request;
 
  class EventController extends Controller
 {
     use EventTrait;
 
      public  function index(){
-         $events =$this->all();
-         return response()->json(['status'=>true,'data'=>$events]);
-
+         $events =$this->group_all();
+         return view('pages.event',['events'=>$events]);
      }
 
-     public  function get($severity=false){
-         $events=[];
-         if(!$severity){
-             $events= $this->all();
+
+     public  function get(Request $request){
+         $severity=null;
+         if($request->has('severity')){
+             $severity=strtolower($request->severity);
          }
-        if($severity & in_array($severity,['low','medium','high'])){
-            $events =$this->$severity();
+         $events=collect();
+        if($severity !=null & in_array($severity,['low','medium','high'])){
+             $method ='group_'.$severity;
+             if(method_exists($this,$method)) {
+                 $events = $this->$method(true);
+             }
         }
-        return response()->json(['status'=>true,'data'=>$events]);
+        $data['events']=$events;
+        $data['severity']=$severity;
+        $data['current_page'] ='events';
+
+       return view('pages.event',$data);
 
      }
-
 
      public function stats(){
-         $critical_events =$this->critical();
+         $critical_events =$this->high();
          $medium_events =$this->medium();
          $low_events =$this->low();
          $data['total_critical_events']=$critical_events->count();
@@ -45,12 +53,14 @@ namespace App\Http\Controllers;
         $all_events =$this->all()->count();
         $medium_events =$this->medium()->count();
         $low_events  =$this->low()->count();
-        $critical_events =$this->critical()->count();
-        $data['critical'] =$critical_events/$all_events * 100;
-        $data['medium'] =$medium_events/$all_events * 100;
-        $data['low'] =$low_events/$all_events * 100;
+        $critical_events =$this->high()->count();
+        $data['critical'] =$critical_events;
+        $data['medium'] =$medium_events;
+        $data['low'] =$low_events;
         return response()->json(['status'=>true,'data'=>$data]);
     }
+
+
 
 
 }

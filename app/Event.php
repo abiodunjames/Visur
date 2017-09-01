@@ -3,6 +3,7 @@
 namespace App;
 
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model {
@@ -23,4 +24,18 @@ class Event extends Model {
      * @var string
      */
     const UPDATED_AT = 'last_modified';
+
+    public  function getSrcIpAttribute($value){
+        return long2ip((float)$value);
+    }
+
+    public  function getDstIpAttribute($value){
+        return long2ip((float)$value);
+    }
+    public function getTimestampAttribute($value){
+        if($value!=null) {
+            $value= Carbon::parse($value)->format('d/m/y');
+        }
+        return $value;
+    }
 }

@@ -3,35 +3,35 @@
 @section('content')
 
     <div class="row tile_count">
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count text-danger">
+            <span class="count_top">High Events</span>
+            <div class="count">{{$high_events_today}}</div>
+            <span class="count_bottom"><i class="green">4% </i> Today</span>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-            <div class="count">123.50</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count text-warning">
+            <span class="count_top"> Medium Events</span>
+            <div class="count">{{$medium_events_today}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> Today</span>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-            <div class="count green">2,500</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count text-info">
+            <span class="count_top">Low Events</span>
+            <div class="count green">{{$low_events_today}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i>Today</span>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-            <div class="count">4,567</div>
-            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count text-danger">
+            <span class="count_top">High Events</span>
+            <div class="count">{{$high_events_week}}</div>
+            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> Last 7 days</span>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-            <div class="count">2,315</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count text-warning">
+            <span class="count_top">Medium Events</span>
+            <div class="count">{{$medium_events_week}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i>Last 7 Days</span>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-            <div class="count">7,325</div>
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count text-info">
+            <span class="count_top">Low Events</span>
+            <div class="count">{{$low_events_week}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i>Last 7 Days</span>
         </div>
     </div>
     <!-- /top tiles -->
