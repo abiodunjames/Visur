@@ -31,7 +31,7 @@ git clone https://github.com/abiodunjames/Visur.git
 ```
 composer install
 ```
-3. Set security onion database connection parameters in .env file at project root folder
+3. Set security onion database connection parameters in .env file at the Visur root folder
 
 ```
 DB_CONNECTION=mysql

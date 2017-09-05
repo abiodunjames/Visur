@@ -8,7 +8,7 @@
             <div class="title_left">
                 <h3>Events</h3>
                 <div class="alert alert-info alert-dismissable">
-                    {{$events->total()}} {{$severity}} events found
+                    {{$events->total()}} {{$severity}} distinct events found
                 </div>
             </div>
 
@@ -66,6 +66,7 @@
                                     <th>Source Port</th>
                                     <th>Destination IP Address</th>
                                     <th>Destination Port</th>
+                                    <th>Event Count</th>
                                     <th>Priority</th>
                                     <th>Date</th>
                                 </tr>
@@ -84,6 +85,7 @@
                                         <td>    {{$event->src_port}}</td>
                                         <td>{{$event->dst_ip}}</td>
                                         <td>{{$event->dst_port}}</td>
+                                        <td>{{$event->total}}</td>
                                         <td>
                                             @if($event->priority==1)
                                                 <span class="label label-danger">High</span>

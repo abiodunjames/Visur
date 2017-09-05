@@ -173,7 +173,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>IP ADDRESS</th>
+                                <th>SIGNATURE</th>
                                 <th>EVENT COUNT</th>
                             </tr>
                             </thead>

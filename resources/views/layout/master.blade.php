@@ -69,7 +69,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('events?severity=high')}}">Critical</a></li>
                                     <li><a href="{{url('events?severity=medium')}}">Medium</a></li>
-                                    <li><a href="{{url('events/severity=low')}}">Low</a></li>
+                                    <li><a href="{{url('events?severity=low')}}">Low</a></li>
 
                                 </ul>
                             </li>
