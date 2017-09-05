@@ -8,7 +8,7 @@
             <div class="title_left">
                 <h3>Events</h3>
                 <div class="alert alert-info alert-dismissable">
-                    {{$events->total()}} {{$severity}} distinct events found
+                    {{$events->total()}} distinct {{$severity}}  events found
                 </div>
             </div>
 

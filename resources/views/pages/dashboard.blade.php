@@ -35,7 +35,7 @@
         <div class="col-md-8 col-sm-8 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Event distribution per day from the last 7 days </h2>
+                    <h2>Events per day for the last 7 days </h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
