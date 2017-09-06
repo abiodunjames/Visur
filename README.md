@@ -41,6 +41,38 @@ DB_DATABASE=securityonion_db
 DB_USERNAME=securityoniondbuser
 DB_PASSWORD=securityoniondbuserpassword
 ```
+
+4. Change ownership of  ``` storage ``` and  ```vendor  ``` folder
+ 
+ ```
+sudo chown -R www-data:www-data /path/to/your/project/vendor
+sudo chown -R www-data:www-data /path/to/your/project/storage
+ ```
+5. Create virtual host configuration 
+ ```
+$ sudo vim /etc/apache2/sites-available/yoursite.conf 
+```
+```yoursite.conf ```  content looks like this
+
+```
+<VirtualHost *:80>
+    ServerAdmin youremail@yoursite.com
+    ServerName yoursite.com
+    ServerAlias www.yoursite.com
+    DocumentRoot "/var/www/yoursite.com/public"
+    <Directory /var/www/yoursite.com/public>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+</VirtualHost>
+ ```
+ 6. Restart apache
+  ```
+ $ sudo service apache2 restart
+ ```
+ 
 ## TODO
 
 1. Authentication and Authorization

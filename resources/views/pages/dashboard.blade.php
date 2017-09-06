@@ -202,7 +202,7 @@
     </div>
  @endsection
 @section('scripts')
-    <script src="bower_components/gentelella/vendors/echarts/dist/echarts.js"></script>
+    <script src="vendors/echarts/dist/echarts.js"></script>
     <script src="js/dashboard.js"></script>
 
 @endsection
