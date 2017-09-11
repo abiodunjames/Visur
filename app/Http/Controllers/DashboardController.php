@@ -1,59 +1,74 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Event;
+use App\Services\Today;
 use App\Traits\EventTrait;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     use EventTrait;
+
     public function __construct()
     {
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
+        $object = new Today();
+        if ($request->has('timeline')) {
+            $timeline = $request->timeline;
+            $class = '\\App\\Services\\' . ucfirst($timeline);
+            if (class_exists($class)) {
+                $object = new $class();
+            }
+        }
+        $data['high'] = $object->high()->count();
+
+        $data['medium'] = $object->medium()->count();
+
+        $data['low'] = $object->low()->count();
+
+        $data['selected'] = strtolower(class_basename($object));
         $data['current_page'] = 'dashboard';
-        $data['src_ip'] = Event::select('src_ip', DB::raw('count(*) as count'))->groupBy('src_ip')->take(10)->get();
-        $data['signature'] = Event::select('signature', DB::raw('count(*) as count'))->groupBy('signature')->take(10)->get();
-        $data['high'] =$this->high()->count();
-        $data['medium'] =$this->medium()->count();
-        $data['low'] =$this->low()->count();
+        $data['src_ip'] = $object->top_src_ip();
+        $data['signature'] = $object->top_signature();
+        $data['min_date']=Carbon::parse($object->min_date)->format('l jS \of F Y h:i:s A');
+        $data['max_date']=Carbon::parse($object->max_date)->format('l jS \of F Y h:i:s A');
         return view('pages.dashboard', $data);
+
     }
 
-    public function barchart()
+
+    public function barchart(Request $request)
     {
-        $last_seven_days = Carbon::now()->subDay(7)->format('Y-m-d');
-        $events = Event::where('timestamp', '>=', $last_seven_days)
-            ->select('timestamp', DB::raw('count(*) as count'))
-            ->groupBy(DB::raw('CAST(timestamp AS DATE)'))
-            ->get();
-        $data['event'] = $events;
-        $data['title'] = 'Event Count';
-        $data['subtitle'] = 'Event Subtitle';
-        $data['status'] = true;
-        return response()->json($data);
+        $object = new Today();
+        if ($request->has('timeline')) {
+            $timeline = $request->timeline;
+            $class = '\\App\\Services\\' . ucfirst($timeline);
+            if (class_exists($class)) {
+                $object = new $class();
+            }
+        }
+        return $object->barchart();
+
 
     }
 
-    public function piechart()
+    public function piechart(Request $request)
     {
-        $last_seven_days = Carbon::now()->subDay(7)->format('Y-m-d');
-        $high = Event::where('timestamp', '>=', $last_seven_days)->where('priority', config('event.priority.high'))->count();
-        $medium = Event::where('timestamp', '>=', $last_seven_days)->where('priority', config('event.priority.medium'))->count();
-        $low = Event::where('timestamp', '>=', $last_seven_days)->where('priority', config('event.priority.low'))->count();
-        $data['event'] = array(
-            ['name' => 'High', 'value' => $high],
-            ['name' => 'medium', 'value' => $medium],
-            ['name' => 'low', 'value' => $low]
-        );
-        $data['status'] = true;
-        return response()->json($data);
+        $object = new Today();
+        if ($request->has('timeline')) {
+            $timeline = $request->timeline;
+            $class = '\\App\\Services\\' . ucfirst($timeline);
+            if (class_exists($class)) {
+                $object = new $class();
+            }
+        }
+        return $object->piechart();
     }
-
 
 
 }

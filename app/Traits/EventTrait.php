@@ -1,7 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-
 namespace App\Traits;
 
 use App\Event;
@@ -9,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 trait  EventTrait
 {
+
+
     public function all()
     {
         return Event::all();

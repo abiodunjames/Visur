@@ -213,7 +213,9 @@
     };
     var barchart = (function () {
         function get() {
-            var link = url + '/barchart';
+            var range = document.getElementById('visur__current__selected__timeline').value;
+            var link = url + '/barchart?timeline='+range;
+
             $.get(link, function (response, status) {
                 if (response.status = true) {
                     var event =response.event;
@@ -290,7 +292,8 @@
     })();
 
     var piechart=( function () {
-        var link = url + '/piechart';
+        var range = document.getElementById('visur__current__selected__timeline').value;
+        var link = url + '/piechart?timeline='+range;
         function get() {
             $.get(link, function (response, status) {
                 if(response.status){

@@ -29,7 +29,12 @@ git clone https://github.com/abiodunjames/Visur.git
 ```
 2. Install Visur dependencies using composer
 ```
-composer install
+$ cd /path/to/visur/directory/visur
+$ composer install
+$ php artisan key:generate
+$ sudo chown -R www-data:www-data /path/to/your/project/vendor
+$ sudo chown -R www-data:www-data /path/to/your/project/storage
+
 ```
 3. Set security onion database connection parameters in .env file at the Visur root folder
 
@@ -42,13 +47,7 @@ DB_USERNAME=securityoniondbuser
 DB_PASSWORD=securityoniondbuserpassword
 ```
 
-4. Change ownership of  ``` storage ``` and  ```vendor  ``` folder
- 
- ```
-sudo chown -R www-data:www-data /path/to/your/project/vendor
-sudo chown -R www-data:www-data /path/to/your/project/storage
- ```
-5. Create virtual host configuration 
+4. Create virtual host configuration 
  ```
 $ sudo vim /etc/apache2/sites-available/yoursite.conf 
 ```
