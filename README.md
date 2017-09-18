@@ -28,7 +28,7 @@ git clone https://github.com/abiodunjames/Visur.git
 ```
 $ cd /path/to/visur/directory/visur
 $ composer install
-$ php artisan key:generate
+$ sudo cp .env.example .env
 ```
 3. Set security onion database connection parameters in .env file at the Visur root folder
 
