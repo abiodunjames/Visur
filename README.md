@@ -66,7 +66,7 @@ Visur was tested on Ubuntu 14.04  and the following steps assume that you have a
 ```
     $ cd /path/to/visur/root/
     $ composer install
-    $ php artisan key:generate
+    $ sudo cp .env.example .env
    ```
  5. Make  ``` storage ``` and ``` vendor ``` folder writable by apache user
    ```
