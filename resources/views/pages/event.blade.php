@@ -80,11 +80,11 @@
                                         <th scope="row">
                                             <button class="btn btn-default btn-circle">{{$i++}}</button>
                                         </th>
-                                        <td>{{$event->signature}}</td>
-                                        <td>{{$event->src_ip}}</td>
-                                        <td>    {{$event->src_port}}</td>
-                                        <td>{{$event->dst_ip}}</td>
-                                        <td>{{$event->dst_port}}</td>
+                                        <td><a href="{{url('event/filter?signature='.$event->signature)}}"> {{$event->signature}}</a></td>
+                                        <td><a href="{{url('event/filter?signature='.$event->src_ip)}}" >{{$event->src_ip}}</a></td>
+                                        <td><a href="{{url('event/filter?signature='.$event->src_port)}}"> {{$event->src_port}}</a></td>
+                                        <td><a href="{{url('event/filter?signature='.$event->dst_ip)}}"> {{$event->dst_ip}}</a></td>
+                                        <td><a href="{{url('event/filter?signature='.$event->dst_port)}}"> {{$event->dst_port}}</a></td>
                                         <td>{{$event->total}}</td>
                                         <td>
                                             @if($event->priority==1)

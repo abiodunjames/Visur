@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title') | Visur </title>
-    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{url('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="{{url('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
     <!-- bootstrap-progressbar -->
     <!-- JQVMap -->
     <!-- bootstrap-daterangepicker -->
     <!-- Custom Theme Style -->
-    <link href="css/custom.min.css" rel="stylesheet">
-    <link href="css/basic.css" rel="stylesheet">
+    <link href="{{url('css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{url('css/basic.css')}}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -130,16 +130,16 @@
 </div>
 
 <!-- jQuery -->
-<script src="vendors/jquery/dist/jquery.min.js"></script>
+<script src="{{url('vendors/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
-<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{{url('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- FastClick -->
-<script src="vendors/fastclick/lib/fastclick.js"></script>
+<script src="{{url('vendors/fastclick/lib/fastclick.js')}}"></script>
 <!-- NProgress -->
-<script src="vendors/nprogress/nprogress.js"></script>
+<script src="{{url('vendors/nprogress/nprogress.js')}}"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="js/app.js"></script>
+<script src="{{url('js/app.js')}}"></script>
 @yield('scripts')
 
 

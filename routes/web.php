@@ -17,6 +17,7 @@ $app->get('/events', 'EventController@get'); //Get all events
 $app->get('/event/stat','EventController@stats');
 $app->get('/event/severity/distribution','EventController@event_severity_percentage');
 
+$app->get('event/filter','FilterEventController@filterEvent');
 
 /*
 |--------------------------------------------------------------------------
