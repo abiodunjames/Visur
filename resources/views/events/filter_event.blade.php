@@ -22,14 +22,14 @@
                 <div class="radio">
                     <div class="radio">
                             <div class="alert alert-defualt">
-                            <h3>{{$events->total()}} Event(s)</h3>
+                            <h3>{{$events->total()}} Event(s) - Page <span class="text-muted">{{$events->currentPage()}} of {{$events->lastPage()}}</span> </h3>
+                                <p></p>
                             </div>
-                            @foreach($filters as $filter)
+                            @foreach(array_except($filters,'page') as $filter)
                                Filtered By : <button>{{$filter}}</button> <br/>
                                 @endforeach
                     </div>
                 </div>
-                {{$events->total()}}
                 </p>
                 <table id="datatable" class="table table-striped table-bordered">
                     <thead>
@@ -56,10 +56,10 @@
                             <td>{{$i++}}</td>
                             <td>{{$event->cid}}</td>
                             <td>{{$event->signature}}</td>
-                            <td><a href="{{url('event/filter?signature='.$event->src_ip)}}">{{$event->src_ip}}</a></td>
-                            <td><a href="{{url('event/filter?signature='.$event->dst_ip)}}">{{$event->dst_ip}}</a></td>
-                            <td><a href="{{url('event/filter?signature='.$event->src_port)}}">{{$event->src_port}}</a></td>
-                            <td><a href="{{url('event/filter?signature='.$event->dst_port)}}">{{$event->dst_port}}</a></td>
+                            <td><a href="{{url('event/filter?src_ip='.$event->src_ip)}}">{{$event->src_ip}}</a></td>
+                            <td><a href="{{url('event/filter?dst_ip='.$event->dst_ip)}}">{{$event->dst_ip}}</a></td>
+                            <td><a href="{{url('event/filter?src_port='.$event->src_port)}}">{{$event->src_port}}</a></td>
+                            <td><a href="{{url('event/filter?dst_port='.$event->dst_port)}}">{{$event->dst_port}}</a></td>
                             <td>{{$event->timestamp}}</td>
                             <td>
                                 @if($event->priority==1)
@@ -78,7 +78,7 @@
                 </table>
                 <div class="row">
                     <div class="pagination">
-                        {{ $events->links() }}
+                        {{ $events->appends($_GET)->links() }}
                     </div>
                 </div>
             </div>
